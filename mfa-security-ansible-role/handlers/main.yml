@@ -1,5 +1,5 @@
 ---
-# handlers file for osm_mfa_login
+# handlers file formfa_login
 
 - name: Restart sshd service
   service: name=sshd state=restarted
