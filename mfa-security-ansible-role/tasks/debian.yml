@@ -15,18 +15,14 @@
   become_user: {{vagrant_user}}
 
 - debug:
-    var: prompt.stdout_lines
+    vame: Update sshd file
 
 - name: Update sshd file
   lineinfile:
     path: /etc/pam.d/sshd
     backup: yes
-    regexp: '^@include common-auth '
-    insertafter: '^@include common-auth'
-    line: '#@include common-auth'
     line: 'auth required pam_google_authenticator.so'
     insertafter: EOF
-    
 
 - name: Update sshd_config file
   lineinfile:
@@ -35,9 +31,8 @@
     regexp: '^ChallengeResponseAuthentication '
     insertafter: '^ChallengeResponseAuthentication '
     line: 'ChallengeResponseAuthentication yes'
-    regexp: '^PasswordAuthentication'
-    insertafter: '^PasswordAuthentication '
-    line: 'PasswordAuthentication no'
-    line: 'AuthenticationMethods  publickey,keyboard-interactive'
+    line: 'AuthenticationMethods publickey,keyboard-interactive'
     insertafter: EOF
-  notify: Restart sshd service
+
+  notify: Restart ssh service
+
