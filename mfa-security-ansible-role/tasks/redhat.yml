@@ -36,4 +36,7 @@
     regexp: '^ChallengeResponseAuthentication '
     insertafter: '^ChallengeResponseAuthentication '
     line: 'ChallengeResponseAuthentication yes'
+    line: 'AuthenticationMethods publickey,keyboard-interactive'
+    insertafter: EOF
   notify: Restart sshd service
+
